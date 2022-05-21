@@ -1,0 +1,11 @@
+<p>posts works!</p>
+<div>
+    <table>
+        <thead>
+            <td *ngFor="let user of getPOSTs()[0] | keyvalue">{{user.key}}</td>
+        </thead>
+        <tr *ngFor="let property of getPOSTs()">
+            <td *ngFor="let product of property | keyvalue">{{product.value}}</td>
+        </tr>
+    </table>
+</div>>

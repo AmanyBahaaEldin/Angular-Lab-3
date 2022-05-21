@@ -1,0 +1,49 @@
+<!-- <p>product works!</p> -->
+<body>
+    <h1>{{StoreName}}</h1>
+    <img [src]="StoreLogo" class="img-fluid" alt="..">
+    <div *ngIf="Discount !=='NoDiscount' ; then show; else hide" >
+    </div>
+        <ng-template #show>
+            <h3>We offer an explicit discount of: {{ Discount }}</h3>
+        </ng-template>
+        <ng-template #hide>
+            <h3></h3>
+        </ng-template>
+    <select name="dropDownList">
+        <option value="">Select Category</option>
+        <option *ngFor="let category of CategoryList" value="">{{category.Name}}</option>
+    </select>
+
+    <br>
+    <input type="text" [(ngModel)]="ClientName" placeholder="Enter your name">
+    {{ClientName}}
+    <div *ngIf="Ispurchased; then viewTable; else viewDiv" ></div>
+    <br>
+    <button class="btn btn-warning" (click)="setPurchased()">Buy</button>
+    <div class="productsBtn">
+        <button (click)="renderValues()">View Products</button>
+        </div> 
+    <ng-template #viewTable>
+    
+        <table>
+            <thead>
+                <td *ngFor="let product of ProductList[0] | keyvalue">{{product.key}}</td>
+            </thead>
+            <tr *ngFor="let singleProduct of ProductList">
+                <td *ngFor="let product of singleProduct | keyvalue">{{product.value}}</td>
+            </tr>
+        </table>
+    </ng-template>
+    <ng-template #viewDiv>
+        <div>
+            <h3>Thanks for purchasing from our Store {{ClientName}}</h3>
+        </div>
+    </ng-template>
+    
+    <h2>{{StoreName | uppercase}}</h2>
+    <h2>{{Discount | percent}}</h2>
+    
+    
+    
+</body>

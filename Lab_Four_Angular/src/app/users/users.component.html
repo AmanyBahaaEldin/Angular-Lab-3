@@ -1,0 +1,11 @@
+<p>users works!</p>
+<div>
+    <table>
+        <thead>
+            <td *ngFor="let user of getUSers()[0] | keyvalue">{{user.key}}</td>
+        </thead>
+        <tr *ngFor="let property of getUSers()">
+            <td *ngFor="let product of property | keyvalue">{{product.value}}</td>
+        </tr>
+    </table>
+</div>>
